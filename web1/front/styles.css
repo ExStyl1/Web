@@ -1,0 +1,133 @@
+/* styles.css */
+
+/* Селектор элемента для заголовка */
+.header {
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-sizing: border-box;
+    z-index: 20;
+}
+
+/* Селектор класса для текста заголовка */
+.header #heading-text {
+    padding: 10px;
+    font-size: 24px;
+    color: white;
+    width: 50%;
+    font-family: serif; /* Задаем шрифт */
+}
+
+/* Селектор класса для левой части */
+.left-part {
+    width: 50%;
+    text-align: center;
+}
+
+/* Селектор класса для правой части */
+.right-part {
+    width: 50%;
+}
+
+/* Селектор элемента для основного контейнера */
+.main {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 20px;
+    color: grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Селектор класса для группы форм */
+.form-group {
+    margin-bottom: 20%;
+    margin-left: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Селектор элемента для меток */
+.form-group label {
+    margin-right: 20px; /* add 10px space between labels */
+}
+
+/* Селектор класса для кнопки */
+.back-button {
+    position: relative;
+    left : 38%;
+    bottom: -10%;
+    display: block;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+}
+
+/* Селектор псевдокласса для кнопки при наведении */
+.back-button:hover {
+    display: block;
+    transform: scale(1.1);
+    background-color: blueviolet;
+    box-shadow: 0 0 10px black;
+}
+
+/* Селектор класса для сообщения об ошибке */
+.error-message {
+    bottom: 15%;
+    text-align: center;
+    color: red;
+}
+
+/* Селектор класса для таблицы */
+.table {
+    position: relative;
+    left: 20%;
+}
+
+/* Селектор атрибута для ячеек таблицы */
+#resultTable th, #resultTable td {
+    width: 100px;
+}
+
+/* Селектор класса для таблицы с дополнительными стилями */
+.table {
+    margin-top: 0%;
+    margin-left: -15%;
+}
+
+/* Селектор псевдокласса для первого элемента в таблице */
+#resultTable tr:first-child {
+    background-color: lightgrey; /* Задаем цвет фона для первой строки */
+}
+
+/* Селектор атрибута для input с классом checkboxes */
+input[type="checkbox"].checkboxes {
+    margin-right: 5px; /* Отступ справа для чекбоксов */
+}
+
+/* Селектор псевдокласса для input при фокусе */
+input[type="text"]:focus {
+    border: 2px solid blue; /* Изменяем цвет рамки при фокусе */
+}
+
+/* Наследование стилей для заголовков */
+h4 {
+    font-family: serif; /* Наследуем шрифт для заголовков */
+    color: darkslategray; /* Задаем цвет заголовков */
+}
+
+/* Каскадирование: более специфичный селектор для заголовка в правой части */
+.right-part h4 {
+    font-size: 22px; /* Увеличиваем размер шрифта для заголовков в правой части */
+}

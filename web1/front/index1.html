@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 1</title>
+</head>
+<style>
+    .header {
+        background-color: black;
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 20;
+    }
+    .header #heading-text {
+        padding: 10px;
+        font-size: 24px;
+        color: white;
+        width: 50%;
+    }
+    .left-part {
+        width: 50%;
+        text-align: center;
+    }
+
+
+
+    .right-part {
+        width: 50%;
+    }
+    .main {
+        margin-top: 100px;
+        text-align: center;
+        font-size: 20px;
+        color: grey;
+        display: flex;
+        justify-content: space-between;
+    }
+    .form-group {
+        margin-bottom: 20%;
+        margin-left: 30%;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .form-group label {
+        margin-right: 20px; /* add 10px space between labels */
+    }
+    .back-button {
+        position: relative;
+        left: 38%;
+        bottom: -10%;
+        display: block;
+        width: 150px;
+        height: 50px;
+        border: none;
+        border-radius: 5px;
+        background-color: grey;
+        color: white;
+        cursor: pointer;
+    }
+    .back-button:hover {
+        display: block;
+        transform: scale(1.1);
+        background-color: blueviolet;
+        box-shadow: 0 0 10px black;
+    }
+    .error-message{
+        bottom: 15%;
+        text-align: center;
+        color: red;
+    }
+    .table{
+        position: relative;
+        left: 20%;
+    }
+    #resultTable th, #resultTable td {
+        width: 100px;
+    }
+</style>
+
+<body>
+
+
+<header class="header">
+    <label id="heading-text"><span class="text">Шевелев Антон Группа P3214 Вариант 369050</span></label>
+</header>
+<div class="main">
+    <div class="left-part">
+        <img src="grafik.png">
+    </div>
+    <div class="right-part">
+        <div>
+            <h4 id="special">Координата X: </h4>
+            <label for="r1"><input type="checkbox" value="-4" id="r1" class="checkboxes" name="x">-4</label>
+            <label for="r2"><input type="checkbox" value="-3" id="r2" class="checkboxes" name="x">-3</label>
+            <label for="r3"><input type="checkbox" value="-2" id="r3" class="checkboxes" name="x">-2</label>
+            <label for="r4"><input type="checkbox" value="-1" id="r4" class="checkboxes" name="x">-1</label>
+            <label for="r5"><input type="checkbox" value="0" id="r5" class="checkboxes" name="x">0</label>
+            <label for="r6"><input type="checkbox" value="1" id="r6" class="checkboxes" name="x">1</label>
+            <label for="r7"><input type="checkbox" value="2" id="r7" class="checkboxes" name="x">2</label>
+            <label for="r8"><input type="checkbox" value="3" id="r8" class="checkboxes" name="x">3</label>
+            <label for="r9"><input type="checkbox" value="4" id="r9" class="checkboxes" name="x">4</label>
+
+            <h4>Координата Y(значение от -5 до 3): </h4>
+            <input type="text" id="coordY" onkeydown="return event.keyCode !== 32 && event.keyCode !== 13;"
+                   >
+        </div>
+        <div>
+            <h4>Координата R: </h4>
+            <select id="coordR">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div id="error-message" class="error-message"></div>
+        <button class="back-button" id="backButton">Ввод</button>
+    </div>
+</div>
+<style>
+    .table {
+        margin-top: 0%;
+        margin-left: -15%;
+    }
+</style>
+<div class="table">
+    <table id="resultTable">
+        <thead>
+            <tr>
+                <th>X</th>
+                <th>Y</th>
+                <th>R</th>
+                <th>Попадание в область</th>
+                <th>Время выполнения</th>
+            </tr>
+        </thead>
+        <tbody style="text-align: center;">
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    const checkboxInputs = document.getElementsByName("x");
+
+    function checkOnlyOne(checkbox) {
+        checkboxInputs.forEach((item) => {
+            if (item !== checkbox) item.checked = false;
+        });
+    }
+    checkboxInputs.forEach(function (checkbox) {
+        checkbox.addEventListener("click", function () {
+            checkOnlyOne(checkbox);
+        });
+    });
+
+    document.getElementById("backButton").addEventListener("click", function() {
+        var checkBoxes = document.getElementsByName("x");
+        var selectedX = null;
+        var coordY = document.getElementById("coordY").value;
+        var coordR = document.getElementById("coordR").value;
+
+        var validXValues = [-4, -3, -2, -1, 0, 1, 2, 3, 4];
+        var validRValues = [1, 2, 3, 4, 5];
+
+        for (var i = 0; i < checkBoxes.length; i++) {
+            if (checkBoxes[i].checked) {
+                selectedX = checkBoxes[i].value;
+                break;
+            }
+
+        }
+        // Валидация X
+        selectedX = selectedX.replace(',', '.');
+        selectedX = parseFloat(selectedX);
+        if (!isValidX(selectedX, validXValues)) {
+            document.getElementById("error-message").innerHTML = "Не выбрано или неправильное значение X. Значение должно быть в диапазоне от -4 до 4.";
+            return; // Прерываем выполнение, если значение X некорректно
+        }
+
+        // Валидация R
+        coordR = coordR.replace(',', '.');
+        coordR = parseFloat(coordR);
+        if (!isValidR(coordR, validRValues)) {
+            document.getElementById("error-message").innerHTML = "Значение R должно быть числом и лежать в диапазоне от 1 до 5.";
+            return; // Прерываем выполнение, если значение R некорректно
+        }
+
+        // Валидация Y
+        coordY = coordY.replace(',', '.'); // Заменяем запятую на точку
+        coordY = parseFloat(coordY);
+        if (!isValidNumber(coordY, -5, 3)) {
+            document.getElementById("error-message").innerHTML = "Значение Y не является числом или лежит вне диапазона от -5 до 3.";
+            return; // Прерываем выполнение, если значение Y некорректно
+        }
+
+        // Если все проверки пройдены, отправляем запрос
+        const url = `http://localhost:8080/fcgi-bin/back.jar?x_field=${selectedX}&y_field=${coordY}&R_field=${coordR}`;
+        fetch(url, {
+            method: 'POST'
+        }).then(response => response
+            .json())
+            .then(data => {
+                console.log('Ответ от сервера:', data);
+                updateTable(data, selectedX, coordY, coordR);
+                })
+            .catch(error => {
+                console.error('Ошибка:', error);
+            });
+        });
+
+    // Функция для проверки валидности числа
+    function isValidNumber(value, min, max) {
+        // Проверяем, является ли строка числом
+        const num = parseFloat(value);
+        return !isNaN(num) && num >= min && num <= max;
+    }
+
+    // Функция для проверки валидности X
+    function isValidX(value, validValues) {
+        const num = parseFloat(value);
+        return validValues.includes(num);
+    }
+
+    // Функция для проверки валидности R
+    function isValidR(value, validValues) {
+        const num = parseFloat(value);
+        return validValues.includes(num);
+    }
+
+    function updateTable(data,x,y,r) {
+        const table = document
+            .getElementById("resultTable")
+            .getElementsByTagName("tbody")[0];
+        const addRow = table.insertRow(-1);
+        const cellX = addRow.insertCell(0);
+        const cellY = addRow.insertCell(1);
+        const cellR = addRow.insertCell(2);
+        const cellAnswer = addRow.insertCell(3);
+        const cellExecuteTime = addRow.insertCell(4);
+
+        cellX.textContent = x;
+        cellY.textContent = y;
+        cellR.textContent = r;
+        cellAnswer.textContent = data.hit;
+        cellExecuteTime.textContent = Number(data.exec_time).toFixed(6) + " мс";}
+</script>
+
+</body>
+
+</html>
+
