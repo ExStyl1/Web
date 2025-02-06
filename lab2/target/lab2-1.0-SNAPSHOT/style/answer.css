@@ -1,0 +1,51 @@
+a {
+    color: #d4af37; /* Цвет ссылки */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-weight: bold; /* Жирный шрифт */
+    margin-left: 2px; /* Отступ слева */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+a:hover {
+    color: #b98f29; /* Цвет ссылки при наведении */
+}
+
+button {
+    background-color: #00527e; /* Цвет фона */
+    color: rgba(255, 255, 255, 0.84); /* Цвет текста */
+    border: none; /* Убираем границу */
+    margin-top: 10px; /* Отступ сверху */
+    padding: 12px 15px; /* Внутренние отступы */
+    cursor: pointer; /* Курсор указателя */
+    border-radius: 5px; /* Скругление углов */
+    transition: background-color 0.3s ease; /* Анимация изменения цвета фона */
+    font-size: 14px; /* Размер шрифта */
+}
+
+button:hover {
+    background-color: #5427aa; /* Цвет фона при наведении */
+    color: #f4f4f4; /* Цвет текста при наведении */
+}
+
+table {
+    width: 100%; /* Ширина таблицы */
+    border-collapse: collapse; /* Схлопывание границ */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 18px; /* Размер шрифта */
+    background-color: #cdcdcd; /* Цвет фона */
+}
+
+.button-container {
+    display: flex; /* Выравнивание элементов в ряд */
+    width: 100%; /* Ширина контейнера */
+}
+
+.button-container button {
+    margin-right: 7px; /* Отступ справа */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Граница */
+    padding: 3px; /* Внутренние отступы */
+    text-align: center; /* Выравнивание текста по центру */
+}

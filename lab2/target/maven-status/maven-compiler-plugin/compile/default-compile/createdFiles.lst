@@ -1,0 +1,6 @@
+com/web/lab2/lab2/servlet/ControllerServlet.class
+com/web/lab2/lab2/servlet/DataServlet.class
+com/web/lab2/lab2/validation/Validate.class
+com/web/lab2/lab2/model/Point.class
+com/web/lab2/lab2/servlet/AreaCheckServlet.class
+com/web/lab2/lab2/model/PointsStorage.class
