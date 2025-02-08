@@ -1,0 +1,83 @@
+.order-table{
+    border-collapse:collapse;
+}
+
+.order-table-header{
+    text-align:center;
+    background:none repeat scroll 0 0 #E5E5E5;
+    border-bottom:1px solid #BBBBBB;
+    padding:16px;
+}
+
+.order-table-odd-row{
+    text-align:center;
+    background:none repeat scroll 0 0 #FFFFFFF;
+    border-top:1px solid #BBBBBB;
+}
+
+.order-table-even-row{
+    text-align:center;
+    background:none repeat scroll 0 0 #F9F9F9;
+    border-top:1px solid #BBBBBB;
+}
+
+header {
+    background-color: #ffffff; /* Цвет фона */
+    padding: 20px; /* Отступы */
+    border-radius: 8px; /* Скругление углов */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); /* Тень */
+}
+
+h1 {
+    font-size: 28px; /* Размер шрифта */
+    margin-top: 0; /* Отступ сверху */
+    color: black; /* Цвет текста */
+}
+
+.content-container {
+    display: flex; /* Выравнивание элементов в ряд */
+    flex-direction: row; /* Направление ряда */
+    align-items: center; /* Выравнивание по центру */
+}
+
+#canvas {
+    background-color: #cdcdcd; /* Цвет фона */
+}
+
+#pointForm {
+    display: flex; /* Выравнивание элементов в колонку */
+    flex-direction: column; /* Направление колонки */
+    align-items: flex-start; /* Выравнивание по левому краю */
+    font-size: 18px; /* Размер шрифта */
+    background-color: #cdcdcd; /* Цвет фона */
+    width: 450px; /* Ширина */
+    height: 300px; /* Высота */
+}
+
+.horizontal {
+    border: 1px solid black; /* Граница */
+    padding: 12px; /* Внутренние отступы */
+    margin-right: 20px; /* Отступ справа */
+    margin-top: 20px; /* Отступ сверху */
+    border-radius: 8px; /* Скругление углов */
+}
+
+label {
+    margin-bottom: 10px; /* Отступ снизу */
+    font-size: 16px; /* Размер шрифта */
+    color: #4a4a4a; /* Цвет текста */
+}
+
+table {
+    width: 100%; /* Ширина */
+    border-collapse: collapse; /* Схлопывание границ */
+    margin-top: 5px; /* Отступ сверху */
+    font-size: 18px; /* Размер шрифта */
+    background-color: #cdcdcd; /* Цвет фона */
+}
+
+th, td {
+    border: 1px solid #ddd; /* Граница */
+    padding: 3px; /* Внутренние отступы */
+    text-align: center; /* Выравнивание текста по центру */
+}
